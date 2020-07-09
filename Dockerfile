@@ -7,14 +7,15 @@ RUN dpkg --add-architecture i386 \
     && apt-get install --no-install-recommends -y wget \
                                                   libc6:i386 \
                                                   libstdc++6:i386 \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
 
-ENV GEEKBENCHVERSION Geekbench-4.4.2-Linux
+ENV GEEKBENCHVERSION Geekbench-4.4.3-Linux
 ENV GEEKBENCHPACKAGE $GEEKBENCHVERSION.tar.gz
 
-RUN wget --quiet --no-check-certificate http://cdn.geekbench.com/$GEEKBENCHPACKAGE -O /tmp/$GEEKBENCHPACKAGE \
+RUN wget --quiet --no-check-certificate https://cdn.geekbench.com/$GEEKBENCHPACKAGE -O /tmp/$GEEKBENCHPACKAGE \
     && mkdir -p /opt/geekbench \
     && tar xzf /tmp/$GEEKBENCHPACKAGE -C /opt/geekbench \
     && rm -rf /tmp/$GEEKBENCHPACKAGE
 
-CMD ["/opt/geekbench/Geekbench-4.4.2-Linux/geekbench4"]
+CMD ["/opt/geekbench/Geekbench-4.4.3-Linux/geekbench4"]
