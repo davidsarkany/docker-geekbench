@@ -10,7 +10,7 @@ RUN dpkg --add-architecture i386 \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
-ENV GEEKBENCHVERSION Geekbench-5.3.2-Linux
+ENV GEEKBENCHVERSION Geekbench-5.4.0-Linux
 ENV GEEKBENCHPACKAGE $GEEKBENCHVERSION.tar.gz
 
 RUN wget --quiet --no-check-certificate https://cdn.geekbench.com/$GEEKBENCHPACKAGE -O /tmp/$GEEKBENCHPACKAGE \
@@ -18,4 +18,4 @@ RUN wget --quiet --no-check-certificate https://cdn.geekbench.com/$GEEKBENCHPACK
     && tar xzf /tmp/$GEEKBENCHPACKAGE -C /opt/geekbench \
     && rm -rf /tmp/$GEEKBENCHPACKAGE
 
-CMD ["/opt/geekbench/Geekbench-5.3.2-Linux/geekbench5"]
+CMD ["/opt/geekbench/Geekbench-5.4.0-Linux/geekbench5"]
